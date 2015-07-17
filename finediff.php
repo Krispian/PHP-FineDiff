@@ -8,7 +8,7 @@
 * Copyright (c) 2011 Raymond Hill (http://raymondhill.net/blog/?p=441)
 *
 * Licensed under The MIT License
-* 
+*
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
 * in the Software without restriction, including without limitation the rights
@@ -671,17 +671,17 @@ class FineDiff {
 
 	private static function renderDiffToHTMLFromOpcode($opcode, $from, $from_offset, $from_len) {
 		if ( $opcode === 'c' ) {
-			echo htmlentities(substr($from, $from_offset, $from_len));
+			echo htmlentities(substr($from, $from_offset, $from_len), ENT_QUOTES, 'UTF-8');
 			}
 		else if ( $opcode === 'd' ) {
 			$deletion = substr($from, $from_offset, $from_len);
 			if ( strcspn($deletion, " \n\r") === 0 ) {
 				$deletion = str_replace(array("\n","\r"), array('\n','\r'), $deletion);
 				}
-			echo '<del>', htmlentities($deletion), '</del>';
+			echo '<del>', htmlentities($deletion, ENT_QUOTES, 'UTF-8'), '</del>';
 			}
 		else /* if ( $opcode === 'i' ) */ {
- 			echo '<ins>', htmlentities(substr($from, $from_offset, $from_len)), '</ins>';
+ 			echo '<ins>', htmlentities(substr($from, $from_offset, $from_len), ENT_QUOTES, 'UTF-8'), '</ins>';
 			}
 		}
 	}
